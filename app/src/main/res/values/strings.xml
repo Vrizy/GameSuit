@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Game Suit</string>
+    <string name="pemain_1">Pemain 1</string>
+    <string name="com">COM</string>
+    <string name="vs">VS</string>
+    <string name="gunting">Gunting</string>
+    <string name="kertas">Kertas</string>
+    <string name="batu">Batu</string>
+    <string name="welcome_to_game_suit">WELCOME TO GAME SUIT</string>
+    <string name="player_one_win">Player 1 Menang!</string>
+    <string name="player_two_win">Player 2 Menang!</string>
+    <string name="draw">Draw!</string>
+    <string name="welcome_to_japan_suit">Welcome to Japan Suit</string>
+    <string name="play">PLAY</string>
+</resources>
