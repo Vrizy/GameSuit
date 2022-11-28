@@ -10,11 +10,10 @@ class LoginScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login_screen)
 
-        val buttonClick = findViewById<Button>(R.id.btn_play)
-            buttonClick.setOnClickListener {
+        val button: Button = findViewById(R.id.btn_play)
+        button.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)}
-
+            startActivity(intent)
+        }
     }
-
 }
