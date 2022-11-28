@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginVertical="70dp"
+        android:layout_marginVertical="80dp"
         android:fontFamily="@font/comic"
         android:rotation="-15"
         android:text="@string/kertas"
@@ -50,7 +50,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_result"
-        android:layout_width="190sp"
+        android:layout_width="185sp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="395sp"
