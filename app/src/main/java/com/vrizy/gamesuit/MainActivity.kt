@@ -1,9 +1,19 @@
 package com.vrizy.gamesuit
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.location.Location
+import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginRight
+import com.bumptech.glide.Glide
 import com.vrizy.gamesuit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +24,142 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+//        setUpView()
         setUpAction()
-
+        askPermission()
+        askPermissionCamera()
+        askPermissionStorage()
     }
+
+    private fun askPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val permissionCheck = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "izin lokasi diberikan", Toast.LENGTH_SHORT).show()
+                getLongLat()
+            } else {
+                Toast.makeText(this, "izin lokasi ditolak", Toast.LENGTH_SHORT).show()
+                requestLocationPermission()
+            }
+        }
+    }
+
+    private fun askPermissionCamera() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val permissionCheck = checkSelfPermission(Manifest.permission.CAMERA)
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "izin camera diberikan", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "izin camera ditolak", Toast.LENGTH_SHORT).show()
+                requestCameraPermission()
+            }
+        }
+    }
+
+    private fun askPermissionStorage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val permissionCheck = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "izin storage diberikan", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "izin storage ditolak", Toast.LENGTH_SHORT).show()
+                requestStoragePermission()
+            }
+        }
+    }
+
+    private fun requestLocationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.READ_EXTERNAL_STORAGE,
+                ), PERMISSION_LOCATION_CODE
+            )
+        }
+    }
+
+    private fun requestCameraPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.CAMERA
+                ), PERMISSION_CAMERA_CODE
+            )
+        }
+    }
+
+    private fun requestStoragePermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            requestPermissions(
+                arrayOf(
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ), PERMISSION_STORAGE_CODE
+            )
+        }
+    }
+
+
+    @SuppressLint("MissingPermission")
+    private fun getLongLat() {
+        val locationManager =
+            applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val location: Location? =
+            locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
+        if (location != null) {
+            Toast.makeText(
+                this, "cek lokasi lat = ${location.latitude} dan long = ${location.longitude}",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            PERMISSION_LOCATION_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "izin lokasi diberikan", Toast.LENGTH_SHORT).show()
+                    getLongLat()
+                }
+            }
+            PERMISSION_CAMERA_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "izin camera diberikan", Toast.LENGTH_SHORT).show()
+                }
+            }
+            PERMISSION_STORAGE_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "izin storage diberikan", Toast.LENGTH_SHORT).show()
+                }
+            }
+            PERMISSION_DENIED_CODE -> {
+                if (grantResults.contains(PackageManager.PERMISSION_DENIED)) {
+                    requestLocationPermission()
+                    requestCameraPermission()
+                    requestStoragePermission()
+                }
+            }
+            else -> Toast.makeText(this, "Bukan request codde yang di kirim", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+
+//    private fun setUpView() {
+//        binding.apply {
+//            Glide.with(this@MainActivity)
+//                .load("https://i.ibb.co/zJHYGBP/binarlogo.jpg")
+//                .circleCrop()
+//                .into(stonePlayer)
+//        }
+//    }
 
     private fun setUpAction() {
         binding.apply {
@@ -188,6 +331,10 @@ class MainActivity : AppCompatActivity() {
 
 
     companion object {
+        const val PERMISSION_DENIED_CODE = 204
+        const val PERMISSION_STORAGE_CODE = 203
+        const val PERMISSION_CAMERA_CODE = 202
+        const val PERMISSION_LOCATION_CODE = 201
         const val SCISSOR = "SCISSOR"
         const val STONE = "STONE"
         const val PAPER = "PAPER"
