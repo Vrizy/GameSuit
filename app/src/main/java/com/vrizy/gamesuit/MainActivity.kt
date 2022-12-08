@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginRight
-import com.bumptech.glide.Glide
 import com.vrizy.gamesuit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
                 getLongLat()
             } else {
                 Toast.makeText(this, "izin lokasi ditolak", Toast.LENGTH_SHORT).show()
-                requestLocationPermission()
+                requestPermission()
             }
         }
     }
@@ -51,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "izin camera diberikan", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "izin camera ditolak", Toast.LENGTH_SHORT).show()
-                requestCameraPermission()
+                requestPermission()
             }
         }
     }
@@ -63,43 +62,22 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "izin storage diberikan", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "izin storage ditolak", Toast.LENGTH_SHORT).show()
-                requestStoragePermission()
+                requestPermission()
             }
         }
     }
 
-    private fun requestLocationPermission() {
+    private fun requestPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(
                 arrayOf(
                     Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.CAMERA,
                     Manifest.permission.READ_EXTERNAL_STORAGE,
-                ), PERMISSION_LOCATION_CODE
+                ), REQUEST_PERMISSION
             )
         }
     }
-
-    private fun requestCameraPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(
-                arrayOf(
-                    Manifest.permission.CAMERA
-                ), PERMISSION_CAMERA_CODE
-            )
-        }
-    }
-
-    private fun requestStoragePermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(
-                arrayOf(
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                ), PERMISSION_STORAGE_CODE
-            )
-        }
-    }
-
 
     @SuppressLint("MissingPermission")
     private fun getLongLat() {
@@ -141,9 +119,7 @@ class MainActivity : AppCompatActivity() {
             }
             PERMISSION_DENIED_CODE -> {
                 if (grantResults.contains(PackageManager.PERMISSION_DENIED)) {
-                    requestLocationPermission()
-                    requestCameraPermission()
-                    requestStoragePermission()
+                    requestPermission()
                 }
             }
             else -> Toast.makeText(this, "Bukan request codde yang di kirim", Toast.LENGTH_SHORT)
@@ -331,6 +307,7 @@ class MainActivity : AppCompatActivity() {
 
 
     companion object {
+        const val REQUEST_PERMISSION = 205
         const val PERMISSION_DENIED_CODE = 204
         const val PERMISSION_STORAGE_CODE = 203
         const val PERMISSION_CAMERA_CODE = 202
