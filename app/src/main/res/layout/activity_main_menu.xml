@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainMenu">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_mainmenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200sp"
+        android:fontFamily="@font/comic"
+        android:paddingBottom="10sp"
+        android:text="PILIH LAWANMU"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_player_vs_player"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/tv_mainmenu"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/landingpage_first" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_player_vs_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_player_vs_player"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20sp"
+        android:fontFamily="@font/comic"
+        android:paddingBottom="10sp"
+        android:text="@string/player_vs_pemain"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_player_vs_cpu"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/tv_player_vs_player"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/landingpage_second" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_player_vs_cpu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/iv_player_vs_cpu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20sp"
+        android:fontFamily="@font/comic"
+        android:text="@string/player_vs_cpu"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/tv_player_vs_cpu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="80dp"
+        android:layout_toRightOf="@id/tv_player_vs_cpu"
+        android:background="@drawable/arrow_right" />
+
+
+</RelativeLayout>

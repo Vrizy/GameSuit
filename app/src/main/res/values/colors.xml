@@ -14,5 +14,6 @@
     <color name="grey">#C3DAE9</color>
     <color name="blood_reed">#D14043</color>
     <color name="light_blue">#0070C0</color>
+    <color name="transparant_white">#0000ffff</color>
 
 </resources>

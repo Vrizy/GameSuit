@@ -5,11 +5,25 @@
     android:layout_height="match_parent"
     tools:context=".content.IntroductionOneFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:background="@color/light_blue"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lp_one"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/landingpage_first"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_lp_one"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textAlignment="center"
+        android:layout_below="@id/lp_one"
+        android:fontFamily="@font/comic"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:text="@string/bermain_suit_melawan_sesama_pemain"/>
+
 
 </RelativeLayout>

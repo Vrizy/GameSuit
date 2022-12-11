@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".content.IntroductionThreeFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/lp_three"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="130dp"
+        android:src="@drawable/landingpage_third" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_lp_three"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lp_three"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/comic"
+        android:paddingTop="20sp"
+        android:text="@string/tuliskan_namamu_di_bawah"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_name"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_lp_three"
+        android:layout_centerInParent="true"
+        android:lineHeight="30sp"
+        android:inputType="text"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next_fragment"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_below="@id/et_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="80dp"
+        android:layout_toEndOf="@id/et_name"
+        android:background="@drawable/arrow_right" />
+
+</RelativeLayout>

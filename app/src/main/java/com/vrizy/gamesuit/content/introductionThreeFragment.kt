@@ -1,15 +1,18 @@
 package com.vrizy.gamesuit.content
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.vrizy.gamesuit.MainMenu
 import com.vrizy.gamesuit.R
 import kotlinx.android.synthetic.*
 
-class IntroductionOneFragment : Fragment() {
+class IntroductionThreeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +24,11 @@ class IntroductionOneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_introduction_one, container, false)
+        return inflater.inflate(R.layout.fragment_introduction_three, container, false)
+        
     }
 
     companion object {
-        fun newInstance(page: Int) = IntroductionOneFragment()
+        fun newInstance(page: Int) = IntroductionThreeFragment()
     }
 }
