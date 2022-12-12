@@ -5,30 +5,47 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
-import com.vrizy.gamesuit.MainMenu
-import com.vrizy.gamesuit.R
-import kotlinx.android.synthetic.*
+import com.vrizy.gamesuit.MainActivity
+import com.vrizy.gamesuit.databinding.FragmentIntroductionThreeBinding
 
 class IntroductionThreeFragment : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    lateinit var binding: FragmentIntroductionThreeBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_introduction_three, container, false)
-        
+        binding = FragmentIntroductionThreeBinding.inflate(inflater, container, false)
+        return binding.root
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setUpAction()
+    }
+
+    private fun setUpAction() {
+        binding.apply {
+            etName.doOnTextChanged { text, start, before, count ->
+                if ((text?.length ?: 0) > 0) {
+                    btnNextFragment.visibility = View.VISIBLE
+                } else {
+                    btnNextFragment.visibility = View.GONE
+                }
+            }
+            btnNextFragment.setOnClickListener { viewClick ->
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                intent.putExtra(KEY_NAME, etName.text.toString())
+                startActivity(intent)
+            }
+        }
     }
 
     companion object {
         fun newInstance(page: Int) = IntroductionThreeFragment()
+        const val KEY_NAME = "KEYWORD NAME"
     }
 }

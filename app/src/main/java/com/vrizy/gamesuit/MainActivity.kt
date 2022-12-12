@@ -17,17 +17,27 @@ import com.vrizy.gamesuit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private var namePlayer: String = "-"
+    private var gameTwo = "-"
     lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-//        setUpView()
+        setContentView(binding.root)
+        namePlayer = intent.getStringExtra(KEY_NAME).toString()
         setUpAction()
         askPermission()
         askPermissionCamera()
         askPermissionStorage()
+        setUpView()
+    }
+
+    private fun setUpView() {
+        binding.apply {
+            tvPlayerOne.text = namePlayer
+//            Toast.makeText(this, "Selamat Datang $namePlayer", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun askPermission() {
@@ -127,15 +137,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-//    private fun setUpView() {
-//        binding.apply {
-//            Glide.with(this@MainActivity)
-//                .load("https://i.ibb.co/zJHYGBP/binarlogo.jpg")
-//                .circleCrop()
-//                .into(stonePlayer)
-//        }
-//    }
 
     private fun setUpAction() {
         binding.apply {
@@ -316,6 +317,7 @@ class MainActivity : AppCompatActivity() {
         const val STONE = "STONE"
         const val PAPER = "PAPER"
         const val DRAW = "DRAW"
+        const val KEY_NAME = "KEYWORD NAME"
     }
 
 

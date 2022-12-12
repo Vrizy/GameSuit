@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".content.IntroductionThreeFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -32,18 +33,25 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_lp_three"
         android:layout_centerInParent="true"
-        android:lineHeight="30sp"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:lineHeight="30sp" />
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tl_slider"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:tabIndicatorColor="@color/light_blue"-->
+<!--        app:tabMode="fixed"/>-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next_fragment"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_below="@id/et_name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-50dp"
+        android:layout_toRightOf="@id/et_name"
         android:layout_marginTop="80dp"
-        android:layout_toEndOf="@id/et_name"
         android:background="@drawable/arrow_right" />
 
 </RelativeLayout>

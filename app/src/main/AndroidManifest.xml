@@ -34,9 +34,10 @@
             android:theme="@style/Theme.GameSuit.FullScreen" />
         <activity
             android:name=".content.IntroductionActivity"
-            android:exported="true"/>
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan"/>
         <activity
-            android:name=".MainMenu"
+            android:name=".MenuScreen"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
