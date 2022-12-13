@@ -30,4 +30,5 @@ class IntroAdapter(fragmentActivity: FragmentActivity) :
 
     override fun createFragment(position: Int): Fragment = fragmentsData[position]
 
-    }
+    fun getFragment(position: Int): Fragment = fragmentsData[position]
+}

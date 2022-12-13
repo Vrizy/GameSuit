@@ -9,7 +9,7 @@
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpSlider"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_indicator"
@@ -22,5 +22,16 @@
         app:tabGravity="center"
         app:tabIndicatorGravity="center"
         app:tabIndicatorHeight="0dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="-50dp"
+        android:layout_marginTop="650dp"
+        android:layout_toRightOf="@id/tab_indicator"
+        android:visibility="visible"
+        android:background="@drawable/ic_right_arrow" />
 
 </RelativeLayout>

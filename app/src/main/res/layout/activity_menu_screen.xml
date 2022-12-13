@@ -59,16 +59,5 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_next"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_below="@id/tv_player_vs_cpu"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="80dp"
-        android:layout_toRightOf="@id/tv_player_vs_cpu"
-        android:background="@drawable/arrow_right" />
-
 
 </RelativeLayout>

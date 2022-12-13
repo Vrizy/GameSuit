@@ -1,19 +1,54 @@
 package com.vrizy.gamesuit
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.vrizy.gamesuit.databinding.ActivityMenuScreenBinding
 
 class MenuScreen : AppCompatActivity() {
+    lateinit var binding: ActivityMenuScreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu_screen)
+        binding = ActivityMenuScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setUpAction()
 
-        val button: Button = findViewById(R.id.btn_next)
-        button.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+    }
+
+    private fun setBackgroundSelector(typeSelection: String) {
+        binding.apply {
+            when (typeSelection) {
+                PLAYER_VS_PLAYER -> {
+                    ivPlayerVsPlayer.setBackgroundResource(R.drawable.bg_selector)
+                    ivPlayerVsCpu.setBackgroundResource(0)
+                }
+                PLAYER_VS_CPU -> {
+                    ivPlayerVsCpu.setBackgroundResource(R.drawable.bg_selector)
+                    ivPlayerVsPlayer.setBackgroundResource(0)
+                }
+            }
         }
+    }
+
+    private fun setUpAction() {
+        val intent = Intent(this, MainActivity::class.java)
+        val name = intent.getStringExtra(KEY_NAME).toString()
+        binding.apply {
+            ivPlayerVsPlayer.setOnClickListener {
+                setBackgroundSelector(PLAYER_VS_PLAYER)
+            }
+            ivPlayerVsCpu.setOnClickListener {
+                setBackgroundSelector(PLAYER_VS_CPU)
+                intent.putExtra(KEY_NAME, name)
+                startActivity(intent)
+            }
+        }
+    }
+
+    companion object {
+        const val KEY_NAME = "KEYWORD NAME"
+        const val PLAYER_VS_PLAYER = "PLAYER VS PLAYER"
+        const val PLAYER_VS_CPU = "PLAYER VS CPU"
     }
 }

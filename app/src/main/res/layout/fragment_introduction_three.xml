@@ -36,16 +36,5 @@
         android:inputType="text"
         android:lineHeight="30sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_next_fragment"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_below="@id/et_name"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="-50dp"
-        android:layout_marginTop="80dp"
-        android:layout_toRightOf="@id/et_name"
-        android:visibility="gone"
-        android:background="@drawable/arrow_right" />
 
 </RelativeLayout>
