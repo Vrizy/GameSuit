@@ -10,6 +10,7 @@ import com.vrizy.gamesuit.content.IntroductionTwoFragment
 class IntroAdapter(fragmentActivity: FragmentActivity) :
     FragmentStateAdapter(fragmentActivity) {
 
+
     private val fragmentsData = listOf(
         IntroductionOneFragment.newInstance(FIRST),
         IntroductionTwoFragment.newInstance(SECOND),

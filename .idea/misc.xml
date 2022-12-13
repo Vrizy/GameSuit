@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Repo/GameSuit/app/src/main/res/drawable/bg_selector.xml" value="0.2015" />
+        <entry key="..\:/Repo/GameSuit/app/src/main/res/drawable/tab_indicator_selected.xml" value="0.1" />
+        <entry key="..\:/Repo/GameSuit/app/src/main/res/drawable/tab_selector.xml" value="0.1" />
+        <entry key="..\:/Repo/GameSuit/app/src/main/res/drawable/tab_selector_default.xml" value="0.1" />
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout-v26/fragment_introduction_two.xml" value="0.24947916666666667" />
-        <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/activity_introduction.xml" value="0.31023550724637683" />
+        <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/activity_introduction.xml" value="0.1" />
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/activity_login_screen.xml" value="0.340625" />
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/activity_main_menu.xml" value="0.3625" />
@@ -13,7 +16,7 @@
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/fragment_introduction.xml" value="0.3625" />
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/fragment_introduction_one.xml" value="0.3179347826086957" />
         <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/fragment_introduction_three.xml" value="0.3625" />
-        <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/fragment_introduction_two.xml" value="0.3625" />
+        <entry key="..\:/Repo/GameSuit/app/src/main/res/layout/fragment_introduction_two.xml" value="0.22" />
         <entry key="..\:/Users/Vicky/Documents/GameSuit/app/src/main/res/drawable/bg_btn_login.xml" value="0.3635" />
         <entry key="..\:/Users/Vicky/Documents/GameSuit/app/src/main/res/drawable/bg_result_blue.xml" value="0.311" />
         <entry key="..\:/Users/Vicky/Documents/GameSuit/app/src/main/res/drawable/bg_result_green.xml" value="0.195" />
@@ -24,6 +27,11 @@
         <entry key="..\:/Users/Vicky/Documents/GameSuit/app/src/main/res/layout/activity_login_screen.xml" value="0.3625" />
         <entry key="..\:/Users/Vicky/Documents/GameSuit/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Vicky/Documents/GameSuit/app/src/main/res/layout/activity_splash_screen.xml" value="0.3625" />
+        <entry key="..\:/Users/vicky/Documents/Repo/GameSuit/app/src/main/res/drawable/tab_indicator_default.xml" value="0.2005" />
+        <entry key="..\:/Users/vicky/Documents/Repo/GameSuit/app/src/main/res/drawable/tab_indicator_selected.xml" value="0.2005" />
+        <entry key="..\:/Users/vicky/Documents/Repo/GameSuit/app/src/main/res/drawable/tab_selector.xml" value="0.2005" />
+        <entry key="..\:/Users/vicky/Documents/Repo/GameSuit/app/src/main/res/layout/activity_introduction.xml" value="0.3625" />
+        <entry key="..\:/Users/vicky/Documents/Repo/GameSuit/app/src/main/res/layout/fragment_introduction_three.xml" value="0.3625" />
       </map>
     </option>
   </component>

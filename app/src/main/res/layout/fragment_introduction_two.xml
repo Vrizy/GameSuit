@@ -5,23 +5,35 @@
     android:layout_height="match_parent"
     tools:context=".content.IntroductionTwoFragment">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp_two"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_lp_one"
+        android:layout_centerInParent="true" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/lp_two"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/landingpage_second"/>
+        android:src="@drawable/landingpage_second" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_lp_one"
         android:layout_width="300sp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textAlignment="center"
         android:layout_below="@id/lp_two"
+        android:layout_centerInParent="true"
         android:fontFamily="@font/comic"
+        android:text="@string/bermain_suit_melawan_komputer"
+        android:textAlignment="center"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="@string/bermain_suit_melawan_komputer"/>
+        android:textStyle="bold" />
 
 </RelativeLayout>

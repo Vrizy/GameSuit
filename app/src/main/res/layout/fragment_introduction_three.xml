@@ -36,13 +36,6 @@
         android:inputType="text"
         android:lineHeight="30sp" />
 
-<!--    <com.google.android.material.tabs.TabLayout-->
-<!--        android:id="@+id/tl_slider"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:tabIndicatorColor="@color/light_blue"-->
-<!--        app:tabMode="fixed"/>-->
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next_fragment"
         android:layout_width="25dp"
@@ -50,8 +43,9 @@
         android:layout_below="@id/et_name"
         android:layout_centerVertical="true"
         android:layout_marginStart="-50dp"
-        android:layout_toRightOf="@id/et_name"
         android:layout_marginTop="80dp"
+        android:layout_toRightOf="@id/et_name"
+        android:visibility="gone"
         android:background="@drawable/arrow_right" />
 
 </RelativeLayout>

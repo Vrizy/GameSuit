@@ -9,6 +9,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import com.vrizy.gamesuit.MainActivity
 import com.vrizy.gamesuit.databinding.FragmentIntroductionThreeBinding
+import kotlinx.android.synthetic.main.fragment_introduction_three.*
 
 class IntroductionThreeFragment : Fragment() {
     lateinit var binding: FragmentIntroductionThreeBinding
@@ -24,8 +25,10 @@ class IntroductionThreeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setUpAction()
     }
+
 
     private fun setUpAction() {
         binding.apply {

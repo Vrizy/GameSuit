@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.marginRight
+import com.google.android.material.snackbar.Snackbar
 import com.vrizy.gamesuit.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +37,10 @@ class MainActivity : AppCompatActivity() {
     private fun setUpView() {
         binding.apply {
             tvPlayerOne.text = namePlayer
-//            Toast.makeText(this, "Selamat Datang $namePlayer", Toast.LENGTH_SHORT).show()
+            Snackbar.make(binding.root, "Selamat Datang $namePlayer", Snackbar.LENGTH_INDEFINITE)
+                .setAction("Tutup"){
+                    Toast.makeText(this@MainActivity, "Selamat Bermain $namePlayer",Toast.LENGTH_LONG).show()
+                }.show()
         }
     }
 
