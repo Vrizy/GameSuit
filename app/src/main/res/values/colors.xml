@@ -15,5 +15,7 @@
     <color name="blood_reed">#D14043</color>
     <color name="light_blue">#0070C0</color>
     <color name="transparant_white">#0000ffff</color>
+    <color name="purple_binar">#9B6DBB</color>
+    <color name="orange_binar">#FF9900</color>
 
 </resources>

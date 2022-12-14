@@ -9,9 +9,15 @@ import android.location.Location
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.LayoutInflaterCompat
 import androidx.core.view.marginRight
 import com.google.android.material.snackbar.Snackbar
 import com.vrizy.gamesuit.databinding.ActivityMainBinding
@@ -38,8 +44,12 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             tvPlayerOne.text = namePlayer
             Snackbar.make(binding.root, "Selamat Datang $namePlayer", Snackbar.LENGTH_INDEFINITE)
-                .setAction("Tutup"){
-                    Toast.makeText(this@MainActivity, "Selamat Bermain $namePlayer",Toast.LENGTH_LONG).show()
+                .setAction("Tutup") {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "Selamat Bermain $namePlayer",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }.show()
         }
     }
@@ -154,6 +164,7 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.draw)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+//                    resultDialog()
 
                 } else if (computerMove == 2) {
                     setComputerSelection(PAPER)
@@ -164,7 +175,7 @@ class MainActivity : AppCompatActivity() {
 
                 } else {
                     setComputerSelection(SCISSOR)
-                    resultSetUp(SCISSOR)
+                    resultSetUp(STONE)
                     tvResult.text = getString(R.string.player_one_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
@@ -241,6 +252,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+//    private fun resultDialog() {
+//            val mainLagiButton = findViewById<Button>(R.id.btn_tryagain)
+//                mainLagiButton.setText("Main Lagi")
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            mainLagiButton.setBackgroundColor(getColor(R.color.purple_binar))
+//        }
+//
+//        val kembaliButton = findViewById<Button>(R.id.btn_backtomenu)
+//            kembaliButton.setText("Kembali Ke Menu")
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            kembaliButton.setBackgroundColor(getColor(R.color.orange_binar))
+//        }
+//        val playerMenangLabel = findViewById<TextView>(R.id.tv_messages_dialog)
+//            playerMenangLabel.setText("Player Menang")
+//    }
+//
+//    fun onMainLagiClick(view: View) {
+//
+//    }
+//    fun onKembaliClick(view: View) {
+//
+//    }
 
     private fun resultSetUp(resultGame: String) {
         binding.apply {
@@ -322,6 +355,7 @@ class MainActivity : AppCompatActivity() {
         const val PAPER = "PAPER"
         const val DRAW = "DRAW"
         const val KEY_NAME = "KEYWORD NAME"
+        const val PLAYER_WIN = "PLAYER WIN"
     }
 
 

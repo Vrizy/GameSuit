@@ -1,12 +1,15 @@
     package com.vrizy.gamesuit.content
 
+    import android.content.Intent
     import android.os.Bundle
     import android.view.LayoutInflater
     import android.view.View
     import android.view.ViewGroup
     import androidx.core.widget.doOnTextChanged
     import androidx.fragment.app.Fragment
+    import com.vrizy.gamesuit.MainActivity
     import com.vrizy.gamesuit.databinding.FragmentIntroductionThreeBinding
+    import kotlinx.android.synthetic.main.fragment_introduction_three.*
 
     class IntroductionThreeFragment : Fragment() {
         lateinit var binding: FragmentIntroductionThreeBinding
@@ -42,6 +45,7 @@
 
         companion object {
             fun newInstance(page: Int) = IntroductionThreeFragment()
+            const val KEY_NAME = "KEYWORD NAME"
 
         }
     }

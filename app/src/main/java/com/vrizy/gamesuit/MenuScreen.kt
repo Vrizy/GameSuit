@@ -7,14 +7,24 @@ import com.vrizy.gamesuit.databinding.ActivityMenuScreenBinding
 
 class MenuScreen : AppCompatActivity() {
     lateinit var binding: ActivityMenuScreenBinding
+    private var namePlayer: String = "-"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        namePlayer = intent.getStringExtra(MainActivity.KEY_NAME).toString()
+        setUpView()
         setUpAction()
-
     }
+
+    private fun setUpView() {
+        binding.apply {
+            tvPlayerVsPlayer.text = "$namePlayer vs Pemain"
+            tvPlayerVsCpu.text = "$namePlayer vs CPU"
+        }
+    }
+
 
     private fun setBackgroundSelector(typeSelection: String) {
         binding.apply {
@@ -33,14 +43,14 @@ class MenuScreen : AppCompatActivity() {
 
     private fun setUpAction() {
         val intent = Intent(this, MainActivity::class.java)
-        val name = intent.getStringExtra(KEY_NAME).toString()
+//        val name = intent.getStringExtra(KEY_NAME).toString()
         binding.apply {
             ivPlayerVsPlayer.setOnClickListener {
                 setBackgroundSelector(PLAYER_VS_PLAYER)
             }
             ivPlayerVsCpu.setOnClickListener {
                 setBackgroundSelector(PLAYER_VS_CPU)
-                intent.putExtra(KEY_NAME, name)
+                intent.putExtra(KEY_NAME, namePlayer)
                 startActivity(intent)
             }
         }

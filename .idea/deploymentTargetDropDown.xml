@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\Vicky\.android\avd\Realme_5_Pro_Lite_API_30.avd" />
+            <value value="C:\Users\vicky\.android\avd\Android_11_API_30.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2022-12-08T16:28:10.005012600Z" />
+    <timeTargetWasSelectedWithDropDown value="2022-12-14T10:33:13.831045700Z" />
   </component>
 </project>
