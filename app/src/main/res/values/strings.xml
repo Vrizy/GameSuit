@@ -20,4 +20,8 @@
     <string name="tuliskan_namamu_di_bawah">Tuliskan namamu di bawah</string>
     <string name="player_vs_cpu">Player vs CPU</string>
     <string name="player_vs_pemain">Player vs Pemain</string>
+    <string name="hasil_permainan">Hasil Permainan</string>
+    <string name="player_menang">Player Menang!</string>
+    <string name="kembali_ke_menu">Kembali Ke Menu</string>
+    <string name="main_lagi">Main Lagi</string>
 </resources>

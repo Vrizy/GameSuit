@@ -1,31 +1,22 @@
 package com.vrizy.gamesuit
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context
-import android.content.pm.PackageManager
+import android.content.Intent
 import android.graphics.Color
-import android.location.Location
-import android.location.LocationManager
-import android.os.Build
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.LayoutInflaterCompat
-import androidx.core.view.marginRight
 import com.google.android.material.snackbar.Snackbar
+import com.vrizy.gamesuit.content.IntroductionActivity
 import com.vrizy.gamesuit.databinding.ActivityMainBinding
+import com.vrizy.gamesuit.databinding.DialogLayoutBinding
 
 class MainActivity : AppCompatActivity() {
 
     private var namePlayer: String = "-"
-    private var gameTwo = "-"
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,9 +25,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         namePlayer = intent.getStringExtra(KEY_NAME).toString()
         setUpAction()
-        askPermission()
-        askPermissionCamera()
-        askPermissionStorage()
         setUpView()
     }
 
@@ -54,104 +42,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun askPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val permissionCheck = checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "izin lokasi diberikan", Toast.LENGTH_SHORT).show()
-                getLongLat()
-            } else {
-                Toast.makeText(this, "izin lokasi ditolak", Toast.LENGTH_SHORT).show()
-                requestPermission()
-            }
-        }
-    }
-
-    private fun askPermissionCamera() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val permissionCheck = checkSelfPermission(Manifest.permission.CAMERA)
-            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "izin camera diberikan", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "izin camera ditolak", Toast.LENGTH_SHORT).show()
-                requestPermission()
-            }
-        }
-    }
-
-    private fun askPermissionStorage() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            val permissionCheck = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-            if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "izin storage diberikan", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "izin storage ditolak", Toast.LENGTH_SHORT).show()
-                requestPermission()
-            }
-        }
-    }
-
-    private fun requestPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.CAMERA,
-                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                ), REQUEST_PERMISSION
-            )
-        }
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun getLongLat() {
-        val locationManager =
-            applicationContext.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val location: Location? =
-            locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-        if (location != null) {
-            Toast.makeText(
-                this, "cek lokasi lat = ${location.latitude} dan long = ${location.longitude}",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.M)
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            PERMISSION_LOCATION_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "izin lokasi diberikan", Toast.LENGTH_SHORT).show()
-                    getLongLat()
-                }
-            }
-            PERMISSION_CAMERA_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "izin camera diberikan", Toast.LENGTH_SHORT).show()
-                }
-            }
-            PERMISSION_STORAGE_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "izin storage diberikan", Toast.LENGTH_SHORT).show()
-                }
-            }
-            PERMISSION_DENIED_CODE -> {
-                if (grantResults.contains(PackageManager.PERMISSION_DENIED)) {
-                    requestPermission()
-                }
-            }
-            else -> Toast.makeText(this, "Bukan request codde yang di kirim", Toast.LENGTH_SHORT)
-                .show()
-        }
-    }
-
-
     private fun setUpAction() {
         binding.apply {
             stonePlayer.setOnClickListener {
@@ -164,7 +54,8 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.draw)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
-//                    resultDialog()
+                    dialogSetUp(DRAW)
+                    Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT).show()
 
                 } else if (computerMove == 2) {
                     setComputerSelection(PAPER)
@@ -172,6 +63,9 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.player_two_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+                    dialogSetUp(CPU_WIN)
+                    Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                        .show()
 
                 } else {
                     setComputerSelection(SCISSOR)
@@ -179,7 +73,9 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.player_one_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
-
+                    dialogSetUp(PLAYER_WIN)
+                    Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
@@ -189,10 +85,13 @@ class MainActivity : AppCompatActivity() {
 
                 if (computerMove == 1) {
                     setComputerSelection(STONE)
-                    resultSetUp(STONE)
+                    resultSetUp(PAPER)
                     tvResult.text = getString(R.string.player_one_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+                    dialogSetUp(PLAYER_WIN)
+                    Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT).show()
+
 
                 } else if (computerMove == 2) {
                     setComputerSelection(PAPER)
@@ -200,6 +99,9 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.draw)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+                    dialogSetUp(DRAW)
+                    Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                        .show()
 
                 } else {
                     setComputerSelection(SCISSOR)
@@ -207,6 +109,9 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.player_two_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+                    dialogSetUp(CPU_WIN)
+                    Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
 
@@ -220,14 +125,18 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.player_two_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+                    dialogSetUp(CPU_WIN)
+                    Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT).show()
 
                 } else if (computerMove == 2) {
                     setComputerSelection(PAPER)
-                    resultSetUp(PAPER)
+                    resultSetUp(SCISSOR)
                     tvResult.text = getString(R.string.player_one_win)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
-                    tvResult.marginRight
+                    dialogSetUp(PLAYER_WIN)
+                    Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                        .show()
 
                 } else {
                     setComputerSelection(SCISSOR)
@@ -235,6 +144,9 @@ class MainActivity : AppCompatActivity() {
                     tvResult.text = getString(R.string.draw)
                     tvResult.setTextColor(Color.WHITE)
                     tvResult.textSize = 35F
+                    dialogSetUp(DRAW)
+                    Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
             reset.setOnClickListener {
@@ -249,31 +161,50 @@ class MainActivity : AppCompatActivity() {
                 tvResult.setTextColor(Color.RED)
                 tvResult.textSize = 65F
             }
+            btnClose.setOnClickListener {
+                val intent = Intent(this@MainActivity, MenuScreen::class.java)
+                startActivity(intent)
+            }
         }
     }
 
-//    private fun resultDialog() {
-//            val mainLagiButton = findViewById<Button>(R.id.btn_tryagain)
-//                mainLagiButton.setText("Main Lagi")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            mainLagiButton.setBackgroundColor(getColor(R.color.purple_binar))
-//        }
-//
-//        val kembaliButton = findViewById<Button>(R.id.btn_backtomenu)
-//            kembaliButton.setText("Kembali Ke Menu")
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            kembaliButton.setBackgroundColor(getColor(R.color.orange_binar))
-//        }
-//        val playerMenangLabel = findViewById<TextView>(R.id.tv_messages_dialog)
-//            playerMenangLabel.setText("Player Menang")
-//    }
-//
-//    fun onMainLagiClick(view: View) {
-//
-//    }
-//    fun onKembaliClick(view: View) {
-//
-//    }
+    @SuppressLint("SetTextI18n")
+    private fun dialogSetUp(nameData: String) {
+        val layoutInflater = LayoutInflater.from(this)
+        val bindingFragment: DialogLayoutBinding =
+            DialogLayoutBinding.inflate(layoutInflater)
+        val dialogView = bindingFragment.root
+        val alert = AlertDialog.Builder(this)
+        alert.apply {
+            setView(dialogView)
+            setCancelable(false)
+        }
+        val alertDialog = alert.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        bindingFragment.apply {
+            btnTryagain.setOnClickListener {
+                alertDialog.dismiss()
+            }
+            btnBacktomenu.setOnClickListener {
+                val intent = Intent(this@MainActivity, IntroductionActivity::class.java)
+                startActivity(intent)
+            }
+            when (nameData) {
+                PLAYER_WIN -> {
+                    tvMessagesDialog.text = "$namePlayer Menang!"
+                    alertDialog.show()
+                }
+                CPU_WIN -> {
+                    tvMessagesDialog.text = "CPU Menang!"
+                    alertDialog.show()
+                }
+                DRAW -> {
+                    tvMessagesDialog.text = "SERI!"
+                    alertDialog.show()
+                }
+            }
+        }
+    }
 
     private fun resultSetUp(resultGame: String) {
         binding.apply {
@@ -297,7 +228,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 
     private fun setPlayerSelection(typeSelection: String) {
         binding.apply {
@@ -343,20 +273,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     companion object {
-        const val REQUEST_PERMISSION = 205
-        const val PERMISSION_DENIED_CODE = 204
-        const val PERMISSION_STORAGE_CODE = 203
-        const val PERMISSION_CAMERA_CODE = 202
-        const val PERMISSION_LOCATION_CODE = 201
         const val SCISSOR = "SCISSOR"
         const val STONE = "STONE"
         const val PAPER = "PAPER"
         const val DRAW = "DRAW"
         const val KEY_NAME = "KEYWORD NAME"
         const val PLAYER_WIN = "PLAYER WIN"
+        const val CPU_WIN = "CPU WIN"
     }
-
-
 }

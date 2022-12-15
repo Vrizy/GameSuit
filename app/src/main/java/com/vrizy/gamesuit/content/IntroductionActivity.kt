@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import com.vrizy.gamesuit.MainActivity
 import com.vrizy.gamesuit.MenuScreen
 import com.vrizy.gamesuit.adapter.IntroAdapter
 import com.vrizy.gamesuit.adapter.IntroAdapter.Companion.FIRST

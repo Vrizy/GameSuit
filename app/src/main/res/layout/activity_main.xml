@@ -6,6 +6,17 @@
     tools:context=".MainActivity">
 
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_close"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_above="@id/tv_com"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="245dp"
+        android:src="@drawable/btn_close" />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_paper"
         android:layout_width="wrap_content"
@@ -50,7 +61,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_result"
-        android:layout_width="185sp"
+        android:layout_width="155sp"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="395sp"
@@ -112,7 +123,7 @@
         android:layout_above="@id/stone_cpu"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="26dp"
         android:text="@string/com"
         android:textColor="@color/blue"
         android:textSize="22sp"
@@ -150,14 +161,12 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/reset"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_below="@id/scissor_cpu"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="18dp"
         android:src="@drawable/refresh" />
 
 </RelativeLayout>

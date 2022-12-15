@@ -2,11 +2,9 @@ package com.vrizy.gamesuit
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.vrizy.gamesuit.content.IntroductionActivity
 import com.vrizy.gamesuit.databinding.ActivityLoginScreenBinding
-import com.vrizy.gamesuit.databinding.ActivityMenuScreenBinding
 import kotlinx.android.synthetic.main.activity_login_screen.*
 
 class LoginScreen : AppCompatActivity() {

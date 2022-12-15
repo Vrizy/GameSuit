@@ -1,5 +1,6 @@
 package com.vrizy.gamesuit
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +19,7 @@ class MenuScreen : AppCompatActivity() {
         setUpAction()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setUpView() {
         binding.apply {
             tvPlayerVsPlayer.text = "$namePlayer vs Pemain"

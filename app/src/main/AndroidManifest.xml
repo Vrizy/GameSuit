@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.vrizy.gamesuit">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -35,12 +36,12 @@
         <activity
             android:name=".content.IntroductionActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"
-            android:theme="@style/Theme.GameSuit.FullScreen"/>
+            android:theme="@style/Theme.GameSuit.FullScreen"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MenuScreen"
             android:exported="true"
-            android:theme="@style/Theme.GameSuit.FullScreen"/>
+            android:theme="@style/Theme.GameSuit.FullScreen" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
