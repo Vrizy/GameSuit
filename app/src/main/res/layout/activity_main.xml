@@ -66,7 +66,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="395sp"
         android:fontFamily="@font/gamja"
-        android:maxLength="15"
         android:rotation="-20"
         android:text="@string/vs"
         android:textAlignment="center"

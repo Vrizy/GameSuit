@@ -1,6 +1,5 @@
 package com.vrizy.gamesuit
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -160,15 +159,18 @@ class MainActivity : AppCompatActivity() {
                 tvResult.text = getString(R.string.vs)
                 tvResult.setTextColor(Color.RED)
                 tvResult.textSize = 65F
+                Toast.makeText(this@MainActivity, "Permainan telah di reset", Toast.LENGTH_SHORT)
+                    .show()
             }
             btnClose.setOnClickListener {
                 val intent = Intent(this@MainActivity, MenuScreen::class.java)
+                intent.putExtra(MenuScreen.KEY_NAME, namePlayer)
                 startActivity(intent)
             }
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private fun dialogSetUp(nameData: String) {
         val layoutInflater = LayoutInflater.from(this)
         val bindingFragment: DialogLayoutBinding =
@@ -186,7 +188,8 @@ class MainActivity : AppCompatActivity() {
                 alertDialog.dismiss()
             }
             btnBacktomenu.setOnClickListener {
-                val intent = Intent(this@MainActivity, IntroductionActivity::class.java)
+                val intent = Intent(this@MainActivity, MenuScreen::class.java)
+                intent.putExtra(MenuScreen.KEY_NAME, namePlayer)
                 startActivity(intent)
             }
             when (nameData) {

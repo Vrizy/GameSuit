@@ -6,29 +6,15 @@
     android:background="@drawable/bg_login"
     tools:context=".LoginScreen">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/btn_play"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="20sp"
-        android:fontFamily="@font/gamja"
-        android:rotationX="20"
-        android:rotationY="20"
-        android:text="@string/start_game"
-        android:textColor="@color/white"
-        android:textSize="40sp"
-        android:textStyle="bold" />
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_play"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@drawable/bg_btn_login"
+      android:layout_centerInParent="true"
+        android:background="@drawable/bg_startgame"
         android:fontFamily="@font/gamja"
-        android:text="@string/play"
+        android:text="Start Game"
+        android:textColor="@color/light_green"
         android:textSize="35sp"
         android:textStyle="bold" />
 
