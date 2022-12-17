@@ -39,7 +39,7 @@ class IntroductionActivity : AppCompatActivity() {
         }
     }
 
-
+    /*-------------SETTINGAN VIEW PAGER------------*/
     private fun setViewPager() {
         binding.apply {
             vpSlider.apply {
@@ -51,6 +51,7 @@ class IntroductionActivity : AppCompatActivity() {
             TabLayoutMediator(tabIndicator, vpSlider) { tab, position ->
             }.attach()
 
+            /*-------------SETTINGAN PENGATURAN HIDE NEXT FRAGMENT BUTTON PADA TIAP FRAGMENT------------*/
             vpSlider.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     when (position) {
@@ -77,6 +78,7 @@ class IntroductionActivity : AppCompatActivity() {
         }
     }
 
+    /*-------------SETTINGAN TOMBOL NEXT UNTUK FRAGMENT 3------------*/
     fun hideAndShowButton(isShow: Boolean) {
         binding.apply {
             if (isShow) {

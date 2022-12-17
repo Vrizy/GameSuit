@@ -14,7 +14,7 @@ class MenuScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        namePlayer = intent.getStringExtra(MainActivity.KEY_NAME).toString()
+        namePlayer = intent.getStringExtra(KEY_NAME).toString()
         setUpView()
         setUpAction()
     }
@@ -27,7 +27,7 @@ class MenuScreen : AppCompatActivity() {
         }
     }
 
-
+    /*-------------SETTINGAN BACKGROUND UNTUK SELECTOR PILIHAN------------*/
     private fun setBackgroundSelector(typeSelection: String) {
         binding.apply {
             when (typeSelection) {
@@ -43,12 +43,15 @@ class MenuScreen : AppCompatActivity() {
         }
     }
 
+    /*-------------SETTINGAN ACTION UNTUK PINDAH HALAMAN------------*/
     private fun setUpAction() {
         val intent = Intent(this, MainActivity::class.java)
-//        val name = intent.getStringExtra(KEY_NAME).toString()
         binding.apply {
             ivPlayerVsPlayer.setOnClickListener {
                 setBackgroundSelector(PLAYER_VS_PLAYER)
+                intent.setClass(this@MenuScreen, MainActivityTwo::class.java)
+                intent.putExtra(KEY_NAME, namePlayer)
+                startActivity(intent)
             }
             ivPlayerVsCpu.setOnClickListener {
                 setBackgroundSelector(PLAYER_VS_CPU)

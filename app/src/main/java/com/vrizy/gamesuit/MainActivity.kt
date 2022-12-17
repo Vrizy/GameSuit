@@ -43,6 +43,8 @@ class MainActivity : AppCompatActivity() {
     private fun setUpAction() {
         binding.apply {
 
+
+            /*-------------SETTINGAN LOGIC PERMAINAN------------*/
             stonePlayer.setOnClickListener {
                 setSelection(STONE_PLAYER)
                 val computerMove = (1..3)
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(DRAW)
-                        Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Batu", Toast.LENGTH_SHORT)
                             .show()
                     }
                     2 -> {
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(CPU_WIN)
-                        Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Kertas", Toast.LENGTH_SHORT)
                             .show()
                     }
                     3 -> {
@@ -76,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(PLAYER_WIN)
-                        Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Gunting", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
@@ -94,7 +96,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(PLAYER_WIN)
-                        Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Batu", Toast.LENGTH_SHORT)
                             .show()
                     }
                     2 -> {
@@ -104,7 +106,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(DRAW)
-                        Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Kertas", Toast.LENGTH_SHORT)
                             .show()
                     }
                     3 -> {
@@ -114,7 +116,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(CPU_WIN)
-                        Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Gunting", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
@@ -132,7 +134,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(CPU_WIN)
-                        Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Batu", Toast.LENGTH_SHORT)
                             .show()
                     }
                     2 -> {
@@ -142,7 +144,7 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(PLAYER_WIN)
-                        Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Kertas", Toast.LENGTH_SHORT)
                             .show()
                     }
                     3 -> {
@@ -152,12 +154,13 @@ class MainActivity : AppCompatActivity() {
                         tvResult.setTextColor(Color.WHITE)
                         tvResult.textSize = 35F
                         dialogSetUp(DRAW)
-                        Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                        Toast.makeText(this@MainActivity, "CPU Memilih Gunting", Toast.LENGTH_SHORT)
                             .show()
                     }
                 }
             }
 
+            /*-------------SETTINGAN TOMBOL RESET------------*/
             reset.setOnClickListener {
                 scissorPlayer.setBackgroundResource(0)
                 stonePlayer.setBackgroundResource(0)
@@ -173,6 +176,7 @@ class MainActivity : AppCompatActivity() {
                     .show()
             }
 
+            /*-------------SETTINGAN TOMBOL CLOSE------------*/
             btnClose.setOnClickListener {
                 val intent = Intent(this@MainActivity, MenuScreen::class.java)
                 intent.putExtra(MenuScreen.KEY_NAME, namePlayer)
@@ -181,7 +185,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
+    /*-------------SETTINGAN DIALOG RESULT------------*/
     private fun dialogSetUp(nameData: String) {
         val layoutInflater = LayoutInflater.from(this)
         val bindingFragment: DialogLayoutBinding =
@@ -220,6 +224,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*-------------SETTINGAN BACKGROUND RESULT------------*/
     private fun resultSetUp(resultGame: String) {
         binding.apply {
             when (resultGame) {
@@ -243,6 +248,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*-------------SETTINGAN BACKGROUND SELECTOR------------*/
     private fun setSelection(typeSelection: String) {
         binding.apply {
             when (typeSelection) {

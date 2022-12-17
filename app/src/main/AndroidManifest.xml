@@ -46,6 +46,11 @@
             android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/Theme.GameSuit.FullScreen" />
+        <activity
+            android:name=".MainActivityTwo"
+            android:exported="true"
+            android:theme="@style/Theme.GameSuit.FullScreen"/>
+
     </application>
 
 </manifest>

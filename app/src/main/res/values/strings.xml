@@ -24,4 +24,5 @@
     <string name="player_menang">Player Menang!</string>
     <string name="kembali_ke_menu">Kembali Ke Menu</string>
     <string name="main_lagi">Main Lagi</string>
+    <string name="pemain_2">Pemain 2</string>
 </resources>
