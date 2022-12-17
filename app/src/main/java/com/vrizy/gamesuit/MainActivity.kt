@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import com.vrizy.gamesuit.content.IntroductionActivity
 import com.vrizy.gamesuit.databinding.ActivityMainBinding
 import com.vrizy.gamesuit.databinding.DialogLayoutBinding
 
@@ -43,111 +42,122 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpAction() {
         binding.apply {
+
             stonePlayer.setOnClickListener {
-                setPlayerSelection(STONE)
-                val computerMove = (1..3).random()
+                setSelection(STONE_PLAYER)
+                val computerMove = (1..3)
+                val randomElement = computerMove.asSequence().shuffled().find { true }
 
-                if (computerMove == 1) {
-                    setComputerSelection(STONE)
-                    resultSetUp(DRAW)
-                    tvResult.text = getString(R.string.draw)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(DRAW)
-                    Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT).show()
-
-                } else if (computerMove == 2) {
-                    setComputerSelection(PAPER)
-                    resultSetUp(PAPER)
-                    tvResult.text = getString(R.string.player_two_win)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(CPU_WIN)
-                    Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
-                        .show()
-
-                } else {
-                    setComputerSelection(SCISSOR)
-                    resultSetUp(STONE)
-                    tvResult.text = getString(R.string.player_one_win)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(PLAYER_WIN)
-                    Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
-                        .show()
+                when (randomElement) {
+                    1 -> {
+                        setSelection(STONE_CPU)
+                        resultSetUp(DRAW)
+                        tvResult.text = getString(R.string.draw)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(DRAW)
+                        Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    2 -> {
+                        setSelection(PAPER_CPU)
+                        resultSetUp(PAPER)
+                        tvResult.text = getString(R.string.player_two_win)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(CPU_WIN)
+                        Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    3 -> {
+                        setSelection(SCISSOR_CPU)
+                        resultSetUp(STONE)
+                        tvResult.text = getString(R.string.player_one_win)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(PLAYER_WIN)
+                        Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
 
             paperPlayer.setOnClickListener {
-                setPlayerSelection(PAPER)
-                val computerMove = (1..3).random()
-
-                if (computerMove == 1) {
-                    setComputerSelection(STONE)
-                    resultSetUp(PAPER)
-                    tvResult.text = getString(R.string.player_one_win)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(PLAYER_WIN)
-                    Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT).show()
-
-
-                } else if (computerMove == 2) {
-                    setComputerSelection(PAPER)
-                    resultSetUp(DRAW)
-                    tvResult.text = getString(R.string.draw)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(DRAW)
-                    Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
-                        .show()
-
-                } else {
-                    setComputerSelection(SCISSOR)
-                    resultSetUp(SCISSOR)
-                    tvResult.text = getString(R.string.player_two_win)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(CPU_WIN)
-                    Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
-                        .show()
+                setSelection(PAPER_PLAYER)
+                val computerMove = (1..3)
+                val randomElement = computerMove.asSequence().shuffled().find { true }
+                when (randomElement) {
+                    1 -> {
+                        setSelection(STONE_CPU)
+                        resultSetUp(PAPER)
+                        tvResult.text = getString(R.string.player_one_win)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(PLAYER_WIN)
+                        Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    2 -> {
+                        setSelection(PAPER_CPU)
+                        resultSetUp(DRAW)
+                        tvResult.text = getString(R.string.draw)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(DRAW)
+                        Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    3 -> {
+                        setSelection(SCISSOR_CPU)
+                        resultSetUp(SCISSOR)
+                        tvResult.text = getString(R.string.player_two_win)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(CPU_WIN)
+                        Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
 
             scissorPlayer.setOnClickListener {
-                setPlayerSelection(SCISSOR)
-                val computerMove = (1..3).random()
-
-                if (computerMove == 1) {
-                    setComputerSelection(STONE)
-                    resultSetUp(STONE)
-                    tvResult.text = getString(R.string.player_two_win)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(CPU_WIN)
-                    Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT).show()
-
-                } else if (computerMove == 2) {
-                    setComputerSelection(PAPER)
-                    resultSetUp(SCISSOR)
-                    tvResult.text = getString(R.string.player_one_win)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(PLAYER_WIN)
-                    Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
-                        .show()
-
-                } else {
-                    setComputerSelection(SCISSOR)
-                    resultSetUp(DRAW)
-                    tvResult.text = getString(R.string.draw)
-                    tvResult.setTextColor(Color.WHITE)
-                    tvResult.textSize = 35F
-                    dialogSetUp(DRAW)
-                    Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
-                        .show()
+                setSelection(SCISSOR_PLAYER)
+                val computerMove = (1..3)
+                val randomElement = computerMove.asSequence().shuffled().find { true }
+                when (randomElement) {
+                    1 -> {
+                        setSelection(STONE_CPU)
+                        resultSetUp(STONE)
+                        tvResult.text = getString(R.string.player_two_win)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(CPU_WIN)
+                        Toast.makeText(this@MainActivity, "CPU memilih Batu", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    2 -> {
+                        setSelection(PAPER_CPU)
+                        resultSetUp(SCISSOR)
+                        tvResult.text = getString(R.string.player_one_win)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(PLAYER_WIN)
+                        Toast.makeText(this@MainActivity, "CPU memilih Kertas", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    3 -> {
+                        setSelection(SCISSOR_CPU)
+                        resultSetUp(DRAW)
+                        tvResult.text = getString(R.string.draw)
+                        tvResult.setTextColor(Color.WHITE)
+                        tvResult.textSize = 35F
+                        dialogSetUp(DRAW)
+                        Toast.makeText(this@MainActivity, "CPU memilih Gunting", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
             }
+
             reset.setOnClickListener {
                 scissorPlayer.setBackgroundResource(0)
                 stonePlayer.setBackgroundResource(0)
@@ -162,6 +172,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this@MainActivity, "Permainan telah di reset", Toast.LENGTH_SHORT)
                     .show()
             }
+
             btnClose.setOnClickListener {
                 val intent = Intent(this@MainActivity, MenuScreen::class.java)
                 intent.putExtra(MenuScreen.KEY_NAME, namePlayer)
@@ -232,42 +243,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setPlayerSelection(typeSelection: String) {
+    private fun setSelection(typeSelection: String) {
         binding.apply {
             when (typeSelection) {
-                STONE -> {
+                STONE_PLAYER -> {
                     stonePlayer.setBackgroundResource(R.drawable.bg_selector)
                     scissorPlayer.setBackgroundResource(0)
                     paperPlayer.setBackgroundResource(0)
                 }
-                PAPER -> {
+                PAPER_PLAYER -> {
                     paperPlayer.setBackgroundResource(R.drawable.bg_selector)
                     scissorPlayer.setBackgroundResource(0)
                     stonePlayer.setBackgroundResource(0)
                 }
-                SCISSOR -> {
+                SCISSOR_PLAYER -> {
                     scissorPlayer.setBackgroundResource(R.drawable.bg_selector)
                     stonePlayer.setBackgroundResource(0)
                     paperPlayer.setBackgroundResource(0)
                 }
-            }
-        }
-    }
-
-    private fun setComputerSelection(typeSelection: String) {
-        binding.apply {
-            when (typeSelection) {
-                STONE -> {
+                STONE_CPU -> {
                     stoneCpu.setBackgroundResource(R.drawable.bg_selector)
                     scissorCpu.setBackgroundResource(0)
                     paperCpu.setBackgroundResource(0)
                 }
-                PAPER -> {
+                PAPER_CPU -> {
                     paperCpu.setBackgroundResource(R.drawable.bg_selector)
                     scissorCpu.setBackgroundResource(0)
                     stoneCpu.setBackgroundResource(0)
                 }
-                SCISSOR -> {
+                SCISSOR_CPU -> {
                     scissorCpu.setBackgroundResource(R.drawable.bg_selector)
                     stoneCpu.setBackgroundResource(0)
                     paperCpu.setBackgroundResource(0)
@@ -277,6 +281,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val STONE_PLAYER = "STONE PLAYER"
+        const val STONE_CPU = "STONE CPU"
+        const val PAPER_PLAYER = "PAPER PLAYER"
+        const val PAPER_CPU = "PAPER CPU"
+        const val SCISSOR_CPU = "SCISSOR CPU"
+        const val SCISSOR_PLAYER = "SCISSOR_PLAYER"
         const val SCISSOR = "SCISSOR"
         const val STONE = "STONE"
         const val PAPER = "PAPER"
